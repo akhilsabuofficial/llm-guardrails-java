@@ -1,0 +1,25 @@
+# Compiled class files
+*.class
+target/
+*.jar
+*.war
+*.ear
+
+# Logs and OS files
+*.log
+.DS_Store
+.DS_Store?
+._*
+
+# IDE and Editors
+.idea/
+*.iml
+.vscode/
+.project
+.classpath
+.settings/
+
+# Secrets and environment files
+.env
+.env.*
+*.secret
