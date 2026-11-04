@@ -68,7 +68,7 @@ langchain4j-guardrails-demo/
 
 ## Prerequisites
 
-- **Java 21** or later.
+- **Java 21** or later (the project uses virtual threads and records).
 - **Maven 3.8+**.
 
 ---
