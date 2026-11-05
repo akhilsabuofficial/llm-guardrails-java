@@ -11,6 +11,16 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 import java.util.stream.Collectors;
 
+/**
+ * Runs input guardrails, calls the model, then runs output guardrails, all concurrently per stage.
+ *
+ * <p>Outcome handling: a BLOCK at either stage returns the fallback response; a REPROMPT at the
+ * output stage appends the corrective instruction and retries the model call; otherwise the
+ * first available rewrite (e.g. PII redaction) is applied to the model output.
+ *
+ * <p>{@code maxRetries} counts retries, not total attempts: with {@code maxRetries = 2} the model
+ * is called at most 3 times (1 initial call + 2 retries) before the fallback is returned.
+ */
 public final class UnifiedGuardrailPipeline {
 
     private final ChatLanguageModel model;
